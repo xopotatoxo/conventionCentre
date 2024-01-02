@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventEASE - Vendors</title>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+			<img src="images/gps-marker-icon.jpg" alt="GPS Marker" id="gps-icon">
+            <div class="logo">EventEASE</div>
+			<div class="page-title" style="margin-bottom: 30px">Vendors</div>
+        </div>
+		<div class="ven1-search-container">
+            <div class="search-box">
+				<input type="text" id="vendor-search" placeholder="Search for vendors..." onkeyup="filterVendors()">
+				<button class="ven1-search-btn" id="toggleViewBtn" onclick="toggleView()">☆</button>
+			</div>
+            <div class="ven1-results">
+			
+				<div id="noResultsMessage" style="display: none; padding: 10px; color: gray;">No matching vendors found.</div>
+			
+				<div class="vendor" data-vendor-id="1">
+					<a href="vendor-info-page-1.html" class="vendor-link">
+					<img src="images/vendor-image1.png" alt="Vendor 1" class="vendor-img">
+					<div class="vendor-info">
+						<h2>Mr. Dice Guy</h2>
+						<p>Every roll should tell a story.</p>
+					</div>
+					</a>
+					<div class="ven1-actions">
+						<button class="bookmark-btn" id="bookmark-btn-1" onclick="toggleBookmark(1)">☆ Bookmark</button>
+					</div>
+				</div>
+							
+				<div class="vendor" data-vendor-id="2">
+					<a href="vendor-info-page-2.html" class="vendor-link">
+					<img src="images/vendor-image2.jpg" alt="Vendor 2" class="vendor-img">
+					<div class="vendor-info">
+						<h2>Polar RPG</h2>
+						<p>Come chill with us!</p>
+					</div>
+					</a>
+					<div class="ven1-actions">
+						<button class="bookmark-btn" id="bookmark-btn-2" onclick="toggleBookmark(2)">☆ Bookmark</button>
+					</div>
+				</div>
+				
+				<div class="vendor" data-vendor-id="3">
+					<a href="vendor-info-page-3.html" class="vendor-link">
+					<img src="images/vendor-image3.png" alt="Vendor 3" class="vendor-img">
+					<div class="vendor-info">
+						<h2>Quest Masters</h2>
+						<p>Embark on epic adventures.</p>
+					</div>
+					</a>
+					<div class="ven1-actions">
+						<button class="bookmark-btn" id="bookmark-btn-3" onclick="toggleBookmark(3)">☆ Bookmark</button>
+					</div>
+				</div>
+
+				<div class="vendor" data-vendor-id="4">
+					<a href="vendor-info-page-4.html" class="vendor-link">
+					<img src="images/vendor-image4.png" alt="Vendor 4" class="vendor-img">
+					<div class="vendor-info">
+						<h2>Dragon's Hoard</h2>
+						<p>For the treasure hunter in all of us.</p>
+					</div>
+					</a>
+					<div class="ven1-actions">
+						<button class="bookmark-btn" id="bookmark-btn-4" onclick="toggleBookmark(4)">☆ Bookmark</button>
+					</div>
+				</div>
+
+				<div class="vendor" data-vendor-id="5">
+					<a href="vendor-info-page-5.html" class="vendor-link">
+					<img src="images/vendor-image5.jpg" alt="Vendor 5" class="vendor-img">
+					<div class="vendor-info">
+						<h2>Card Cavern</h2>
+						<p>Dealing you the best in collectible cards.</p>
+					</div>
+					</a>
+					<div class="ven1-actions">
+						<button class="bookmark-btn" id="bookmark-btn-5" onclick="toggleBookmark(5)">☆ Bookmark</button>
+					</div>
+				</div>
+
+				<div class="vendor" data-vendor-id="6">
+					<a href="vendor-info-page-6.html" class="vendor-link">
+					<img src="images/vendor-image6.jpg" alt="Vendor 6" class="vendor-img">
+					<div class="vendor-info">
+						<h2>Miniature Kingdom</h2>
+						<p>Small figures, big worlds.</p>
+					</div>
+					</a>
+					<div class="ven1-actions">
+						<button class="bookmark-btn" id="bookmark-btn-6" onclick="toggleBookmark(6)">☆ Bookmark</button>
+					</div>
+				</div>
+
+				<div class="vendor" data-vendor-id="7">
+					<a href="vendor-info-page-7.html" class="vendor-link">
+					<img src="images/vendor-image7.jpg" alt="Vendor 7" class="vendor-img">
+					<div class="vendor-info">
+						<h2>Board Game Empire</h2>
+						<p>Conquer boredom with strategy and fun.</p>
+					</div>
+					</a>
+					<div class="ven1-actions">
+						<button class="bookmark-btn" id="bookmark-btn-7" onclick="toggleBookmark(7)">☆ Bookmark</button>
+					</div>
+				</div>
+
+				<div class="vendor" data-vendor-id="8">
+					<a href="vendor-info-page-8.html" class="vendor-link">
+					<img src="images/vendor-image8.jpg" alt="Vendor 8" class="vendor-img">
+					<div class="vendor-info">
+						<h2>Puzzle Palace</h2>
+						<p>Where every piece fits.</p>
+					</div>
+					</a>
+					<div class="ven1-actions">
+						<button class="bookmark-btn" id="bookmark-btn-8" onclick="toggleBookmark(8)">☆ Bookmark</button>
+					</div>
+				</div>
+
+				<div class="vendor" data-vendor-id="9">
+					<a href="vendor-info-page-9.html" class="vendor-link">
+					<img src="images/vendor-image9.png" alt="Vendor 9" class="vendor-img">
+					<div class="vendor-info">
+						<h2>Figure Fanatics</h2>
+						<p>Characters brought to life in collectible form.</p>
+					</div>
+					</a>
+					<div class="ven1-actions">
+						<button class="bookmark-btn" id="bookmark-btn-9" onclick="toggleBookmark(9)">☆ Bookmark</button>
+					</div>
+				</div>
+
+				<div class="vendor" data-vendor-id="10">
+					<a href="vendor-info-page-10.html" class="vendor-link">
+					<img src="images/vendor-image10.jpg" alt="Vendor 10" class="vendor-img">
+					<div class="vendor-info">
+						<h2>Role Play Road</h2>
+						<p>Dress up and dive into your fantasy.</p>
+					</div>
+					</a>
+					<div class="ven1-actions">
+						<button class="bookmark-btn" id="bookmark-btn-10" onclick="toggleBookmark(10)">☆ Bookmark</button>
+					</div>
+				</div>
+
+				<div class="vendor" data-vendor-id="11">
+					<a href="vendor-info-page-11.html" class="vendor-link">
+					<img src="images/vendor-image11.jpg" alt="Vendor 11" class="vendor-img">
+					<div class="vendor-info">
+						<h2>Gamer's Grimoire</h2>
+						<p>Spellbooks and scrolls for the avid arcanist.</p>
+					</div>
+					</a>
+					<div class="ven1-actions">
+						<button class="bookmark-btn" id="bookmark-btn-11" onclick="toggleBookmark(11)">☆ Bookmark</button>
+					</div>
+				</div>
+
+				<div class="vendor" data-vendor-id="12">
+					<a href="vendor-info-page-12.html" class="vendor-link">
+					<img src="images/vendor-image12.png" alt="Vendor 12" class="vendor-img">
+					<div class="vendor-info">
+						<h2>The Lore Lair</h2>
+						<p>Dive deep into game lore and backstories.</p>
+					</div>
+					</a>
+					<div class="ven1-actions">
+						<button class="bookmark-btn" id="bookmark-btn-12" onclick="toggleBookmark(12)">☆ Bookmark</button>
+					</div>
+				</div>
+				
+			</div>
+			
+			<script>
+			// Function to toggle the bookmark status
+			function toggleBookmark(vendorId) {
+				var bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || {};
+				var isBookmarked = bookmarks[vendorId];
+
+				// Toggle the bookmark status
+				bookmarks[vendorId] = !isBookmarked;
+
+				// Update the localStorage
+				localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+
+				// Update the button visually
+				var button = document.getElementById('bookmark-btn-' + vendorId);
+				button.textContent = bookmarks[vendorId] ? '★ Bookmarked' : '☆ Bookmark';
+				
+				updateVendorDisplay();
+			}
+
+			// Initialize bookmarks on page load
+			document.addEventListener('DOMContentLoaded', function() {
+				var bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || {};
+				for (var vendorId in bookmarks) {
+					var button = document.getElementById('bookmark-btn-' + vendorId);
+					if(button) {
+						button.textContent = bookmarks[vendorId] ? '★ Bookmarked' : '☆ Bookmark';
+					}
+				}
+				updateVendorDisplay();
+			});
+			</script>
+			
+			<script>
+			// Function to filter vendors
+			function filterVendors() {
+				var input, filter, vendors, vendor, i, txtValue;
+				var noResults = true;
+
+				input = document.getElementById('vendor-search');
+				filter = input.value.toUpperCase();
+				vendors = document.getElementsByClassName('vendor');
+
+				for (i = 0; i < vendors.length; i++) {
+					vendor = vendors[i].getElementsByClassName('vendor-info')[0];
+					txtValue = vendor.textContent || vendor.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						vendors[i].style.display = "";
+						noResults = false;
+					} else {
+						vendors[i].style.display = "none";
+					}
+				}
+
+				document.getElementById('noResultsMessage').style.display = noResults ? "" : "none";
+			}
+
+
+			// Event listener for the search input field
+			document.getElementById('vendor-search').addEventListener('keyup', filterVendors);
+			</script>
+			
+			<script>
+			
+			var showOnlyBookmarked = false;
+			
+			function toggleView() {
+				showOnlyBookmarked = !showOnlyBookmarked;
+				document.getElementById('toggleViewBtn').textContent = showOnlyBookmarked ? '★' : '☆';
+				updateVendorDisplay();
+			}
+
+			function updateVendorDisplay() {
+				var vendors = document.getElementsByClassName('vendor');
+				var bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || {};
+				var noResults = true;
+
+				for (var i = 0; i < vendors.length; i++) {
+					var vendorId = vendors[i].getAttribute('data-vendor-id');
+					var isBookmarked = bookmarks[vendorId];
+
+					if (showOnlyBookmarked && !isBookmarked) {
+						vendors[i].style.display = 'none';
+					} else {
+						vendors[i].style.display = '';
+						noResults = false;
+					}
+				}
+
+				document.getElementById('noResultsMessage').style.display = noResults ? "" : "none";
+			}
+
+			
+			
+			</script>
+
+        </div>
+		<div class="navbar">
+			<a href="index.html"><div class="nav-item">⌂</div></a>
+			<a onclick="openDialog();"><div class="nav-item">?</div></a>
+		</div>
+		<div id="helpModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeDialog()">&times;</span>
+				<h2>Vendor Directory User Guide</h2>
+				<p>Welcome to the <strong>EventEASE</strong> Vendor Directory! This page allows you to browse and interact with a list of vendors participating in the event.</p>
+				<ul>
+					<li><strong>Searching for Vendors:</strong> Use the search bar at the top of the page to find vendors by name. As you type, the list will update to show only those vendors matching your search query.  You can also press the star to filter by favourites.</li>
+					<li><strong>Viewing Vendor Details:</strong> Click on any vendor to view more information about them. You will be taken to a dedicated page with details such as their products, location, and contact info.</li>
+					<li><strong>Bookmarking Vendors:</strong> You can bookmark vendors for quick access later. Just click the 'Bookmark' button next to a vendor's name. Bookmarked vendors can be viewed by toggling the filter in the search bar.</li>
+				</ul>
+				
+				<p>The navbar at the bottom of the screen helps you navigate through the <strong>EventEASE</strong> app. Use the <strong>home</strong> icon to return to the main menu, the <strong>back</strong> icon to go to the previous page, and the <strong>question mark</strong> icon to open this help dialog.</p>
+				
+				<p>If you need further assistance or have any questions, please reach out to our support team at support@EventEase.com or call us at 719-266-2837.</p>
+			</div>
+		</div>
+		<script>
+			// When the user clicks the ?, open the modal 
+			function openDialog() {
+				document.getElementById('helpModal').style.display = "block";
+			}
+			
+			// When the user clicks on (x), close the modal
+			function closeDialog() {
+				document.getElementById('helpModal').style.display = "none";
+			}
+		</script>
+		<div class="arrow" onclick="goBack()">
+            ← 
+        </div>
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
+		
+    </div>
+</body>
+</html>

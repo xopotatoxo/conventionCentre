@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventEASE - Map</title>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+			<img src="images/gps-marker-icon.jpg" alt="GPS Marker" id="gps-icon">
+            <div class="logo">EventEASE</div>
+			<div class="page-title" style="margin-bottom: 30px">Map</div>
+        </div>
+		<div class="map-container">
+			<img src="images/map-image.avif" alt="Map" id="map" draggable="false">
+			<button id="reset-map" class="reset-map-btn">Reset Map</button>
+		</div>
+
+		<script>
+			const mapContainer = document.querySelector('.map-container');
+			const mapImage = document.getElementById('map');
+			const resetButton = document.getElementById('reset-map');
+			let isDragging = false;
+			let dragStartX, dragStartY, dragOffsetX = 0, dragOffsetY = 0, scale = 1;
+			const dragMargin = 50; // Margin for extra freedom in dragging
+			const maxScale = 8; // Maximum zoom level
+
+			function updateMapTransform() {
+				mapImage.style.transform = `translate(${dragOffsetX}px, ${dragOffsetY}px) scale(${scale})`;
+			}
+
+			function getBounds() {
+				const containerRect = mapContainer.getBoundingClientRect();
+				const scaledWidth = mapImage.offsetWidth * scale;
+				const scaledHeight = mapImage.offsetHeight * scale;
+				const extraWidth = Math.max(scaledWidth - containerRect.width, 0);
+				const extraHeight = Math.max(scaledHeight - containerRect.height, 0);
+
+				return {
+					minX: -extraWidth / 2 - dragMargin,
+					maxX: extraWidth / 2 + dragMargin,
+					minY: -extraHeight / 2 - dragMargin,
+					maxY: extraHeight / 2 + dragMargin,
+				};
+			}
+
+			function enforceBounds() {
+				const bounds = getBounds();
+				dragOffsetX = Math.max(Math.min(dragOffsetX, bounds.maxX), bounds.minX);
+				dragOffsetY = Math.max(Math.min(dragOffsetY, bounds.maxY), bounds.minY);
+				updateMapTransform();
+			}
+
+			mapImage.addEventListener('mousedown', function(e) {
+				isDragging = true;
+				dragStartX = e.clientX - dragOffsetX;
+				dragStartY = e.clientY - dragOffsetY;
+				this.style.cursor = 'grabbing';
+			});
+
+			document.addEventListener('mousemove', function(e) {
+				if (isDragging) {
+					dragOffsetX = e.clientX - dragStartX;
+					dragOffsetY = e.clientY - dragStartY;
+					enforceBounds();
+				}
+			});
+
+			document.addEventListener('mouseup', function() {
+				isDragging = false;
+				mapImage.style.cursor = 'grab';
+			});
+
+			mapImage.addEventListener('wheel', function(e) {
+				e.preventDefault();
+				const zoomIntensity = 0.02;
+				const oldScale = scale;
+				scale += e.deltaY * -zoomIntensity;
+				scale = Math.min(Math.max(scale, 1), maxScale); // Enforce min and max scale limits
+
+				// Adjust the drag offsets when zooming
+				const rect = mapContainer.getBoundingClientRect();
+				const x = (e.clientX - rect.left) / oldScale;
+				const y = (e.clientY - rect.top) / oldScale;
+				dragOffsetX -= (x - dragOffsetX) * (scale - oldScale);
+				dragOffsetY -= (y - dragOffsetY) * (scale - oldScale);
+
+				enforceBounds();
+			});
+			
+			function resetMap() {
+				scale = 1;
+				translateX = 0;
+				translateY = 0;
+				mapImage.style.transform = 'translate(0px, 0px) scale(1)';
+			}
+
+			resetButton.addEventListener('click', resetMap);
+			
+		</script>
+
+		<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			var imageElement = document.getElementById('map');
+
+			var images = ['images/map-image.png', 'images/map-image0.png'];
+			var currentIndex = 0;
+
+			setInterval(function() {
+				// Switch to the other image
+				currentIndex = (currentIndex + 1) % images.length;
+				imageElement.src = images[currentIndex];
+			}, 750); // Change image every 750 milliseconds (0.75 seconds)
+			
+			// Function to update images
+			function updateImages(newImages) {
+				images = newImages;
+				currentIndex = 0; // Reset the index to start from the first image of the new set
+			}
+
+			// Event listeners for buttons
+			document.getElementById('washroom4').addEventListener('click', function() {
+				updateImages(['images/wroom.png', 'images/wroom0.png']);
+			});
+
+			document.getElementById('atm4').addEventListener('click', function() {
+				updateImages(['images/atm.png', 'images/atm0.png']);
+			});
+
+			document.getElementById('eat4').addEventListener('click', function() {
+				updateImages(['images/eat.png', 'images/eat0.png']);
+			});
+			
+			document.getElementById('base4').addEventListener('click', function() {
+				updateImages(['images/map-image.png', 'images/map-image0.png']);
+			});
+			
+			document.getElementById('info4').addEventListener('click', function() {
+				updateImages(['images/info.png', 'images/info0.png']);
+			});
+			
+		});
+		</script>
+
+
+
+
+		<div class="map-buttons-container">
+			<button class="poi-button" data-type="washroom" id="washroom4">Washrooms</button>
+			<button class="poi-button" data-type="atm" id="atm4">ATMs</button>
+			<button class="poi-button" data-type="eat" id="eat4">Food and Beverage</button>
+			<a href="vendors.html"><button class="poi-button-extra" data-type="vendor" id="vendor4">Vendors</button></a>
+			<button class="poi-button" data-type="base" id="base4">Base Map</button>
+			<button class="poi-button" data-type="info" id="info4">Information Desks</button>
+		</div>
+		<div class="navbar">
+			<a href="index.html"><div class="nav-item">⌂</div></a>
+			
+			<a onclick="openDialog();"><div class="nav-item">?</div></a>
+		</div>
+		<div id="helpModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeDialog()">&times;</span>
+				<h2>EventEase Map User Guide</h2>
+				<p>Beneath the map, you'll find buttons corresponding to various points of interest. Click on these to discover their locations and receive guidance on how to get there.  You are also able to interact with the map by zooming in and out or dragging.  You can press the <strong>Reset Map</strong> button to bring the map back to its original orientation.<p>
+				<ul>
+					<li><strong>Washrooms:</strong> Tap here to view the locations of all washrooms within the venue.</li>
+					<li><strong>ATMs:</strong> Need cash? This button will show you where ATMs are located.</li>
+					
+					<li><strong>Food and Beverage:</strong> Explore food and beverage options available.</li>
+					
+					<li><strong>Vendors:</strong> Find the full list of vendors and their booth numbers here.</li>
+					
+					<li><strong>Information Desks:</strong> For any inquiries or assistance, locate an information desk with this option.</li>
+					
+					<li><strong>Base Map:</strong> Tap this for the map to return to the original view, displaying a flashing pointer indicating where you are in the venue.</li>
+				</ul>
+				<p>As always, the <strong>navbar</strong> is present along the bottom of the screen. Use the <strong>home</strong> icon to return to the main menu and navigate elsewhere. The <strong>question mark</strong> icon opens this help dialog.</p>
+				<p>If you need further assistance, please reach out to our support team at support@EventEase.com or 719-266-2837.</p>
+			</div>
+		</div>
+		<script>
+			// When the user clicks the ?, open the modal 
+			function openDialog() {
+				document.getElementById('helpModal').style.display = "block";
+			}
+			
+			// When the user clicks on (x), close the modal
+			function closeDialog() {
+				document.getElementById('helpModal').style.display = "none";
+			}
+		</script>
+    </div>
+</body>
+</html>

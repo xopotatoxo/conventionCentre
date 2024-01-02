@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventEASE - Purchase Tickets</title>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="481_ticket3.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+			<img src="gps-marker-icon.jpg" alt="GPS Marker" id="gps-icon">
+            <div class="logo">EventEASE</div>
+			<div class="page-title">Purchase Tickets</div>
+        </div>
+		<div class="purchase-container">
+			<div class="purchase-options">
+				<div class="option single-day">
+					<h3>Single-Day Pass</h3>
+					<select name="day" id="day">
+						<option value="thursday">Thursday</option>
+						<option value="friday">Friday</option>
+						<option value="saturday">Saturday</option>
+						<option value="sunday">Sunday</option>
+					</select>
+					<div class="prices">
+						<p>Adult: $30 <input type="number" min="0" placeholder="Qty" name="adult"></p>
+						<p>Youth: $20 <input type="number" min="0" placeholder="Qty" name="youth"></p>
+						<p>Child: $10 <input type="number" min="0" placeholder="Qty" name="child"></p>
+						<p>Family: $80 <input type="number" min="0" placeholder="Qty" name="family"></p>
+					</div>
+				</div>
+				<div class="flex-container">
+					<div class="option multi-day">
+						<h3>Multi-Day Pass</h3>
+						<p>Price: $100 <input type="number" min="0" placeholder="Qty" name="multi-day"></p>
+					</div>
+					<div class="option vip">
+						<h3>VIP Pass</h3>
+						<p>Price: $150 <input type="number" min="0" placeholder="Qty" name="vip"></p>
+					</div>
+				</div>
+			</div>
+			<div class="total-amnt">Total = $0.00</div>
+			<button class="purchase-btn">Proceed to Checkout</button>
+		</div>
+		<div class="navbar">
+			<div class="nav-item">⌂</div>
+			<div class="nav-item">?</div>
+		</div>
+		<div class="arrow">
+            ← 
+        </div>
+		<!-- ←→ -->
+    </div>
+</body>
+</html>

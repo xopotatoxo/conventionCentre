@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        h1 {text-align: center; font-size: 10vh; margin-bottom: 2.5vh;}
+        h1 {font-family: Arial;}
+        h2{text-align: center; font-family: Arial; font-size: 7vh; margin-top: 3vh; margin-bottom: 2.5vh;}
+        
+        .search-bar {
+            width: 70vw;
+            height: 4vh;
+            margin: 1vh auto;
+            display: block;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            height: 100%;
+            font-size: 3.4vh;
+            border: none;
+            border-radius: 2vw;
+            padding: 2vw;
+            box-sizing: border-box;
+        }
+        .search-bar i {
+            position: absolute;
+            right: 2vw;
+            /*top: 1vh;*/
+        }
+        button{
+            margin-left: 34%;
+            border: none;
+            color: black;
+            text-align: center;
+            font-size: 3vh;
+            background-color: white;
+            border-radius: 3vh;
+            width: 32%;
+            height: 7vh;
+            margin-bottom: 3%;
+            margin-top: 0;
+        }
+        .button1{
+            width: 12%;
+            height:4vh;
+            margin-left: auto;
+            border-radius: 2vh;
+            font-size: 2vh;
+            margin-bottom: auto;
+        }
+        .button2{
+            float:left; 
+            text-align: center;
+            display:inline; 
+            margin-left:32vw;
+            width: 15vw;
+            height:4vh;
+            border-radius: 2vh;
+            font-size: 2.5vh;
+            background-image: linear-gradient(to right, #ff3131 , #ff914d);
+            z-index: 2;
+        }
+        .button3{
+            float:left; 
+            text-align: center;
+            display:inline; 
+            margin-left:3vw;
+            width: 15vw;
+            height:4vh;
+            border-radius: 2vh;
+            font-size: 2.5vh;
+            background-image: linear-gradient(to left, #ff3131 , #ff914d);;
+            z-index: 1;
+        }
+        .input{
+            height: 4vh;
+        }
+    </style>
+<head>
+    <title>Find A Vendor</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body style="background-image: linear-gradient(to right, #5de0e6 , #004aad);">
+    
+    <h1>Find A Vendor</h1>
+    <div class="search-bar">
+        <input type="search" placeholder="What are you looking for?" />
+        <i class="icon-search"></i>
+    </div>
+     <!-- <div class="topnav">
+        <div class="search-container">
+          <form action="/action_page.php">
+           <input type="text" placeholder="What are you looking for?" name="search">
+            <button class="button button1"; type="submit">&#128269;</button>
+                  </form>
+        </div>
+      </div> -->
+      
+    
+      <h2>Categories</h2>
+      <button type="button">Clothing</button>
+      <button type="button">Collectibles</button>
+      <button type="button">Art</button>
+      <button type="button">Comics</button>
+      <button type="button">Harry Potter</button>
+      <div>
+        <button class="button button2">&#127968;</button>
+        <button class="button button3">&#11088; Wishlist</button>
+       <!-- <div class="five-pointed-star"></div>-->
+      </div>
+</body>    
+</html>

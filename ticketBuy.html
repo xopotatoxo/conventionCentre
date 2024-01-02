@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventEASE - Purchase Tickets</title>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+			<img src="images/gps-marker-icon.jpg" alt="GPS Marker" id="gps-icon">
+            <div class="logo">EventEASE</div>
+			<div class="page-title" style="margin-top: 30px; margin-bottom: -10px;">Ticket<br>Options</div>
+        </div>
+		<div class="purchase-container">
+			<div class="purchase-options">
+				<div class="option single-day">
+					<h3>Single-Day Pass</h3>
+					<select name="day" id="day">
+						<option value="thursday">Thursday</option>
+						<option value="friday">Friday</option>
+						<option value="saturday">Saturday</option>
+						<option value="sunday">Sunday</option>
+					</select>
+					<div class="prices">
+						<p>Adult (18+): $30 <input type="number" min="0" placeholder="Qty" name="adult" data-price="30" value="0"></p>
+						<p>Youth (13-17): $20 <input type="number" min="0" placeholder="Qty" name="youth" data-price="20" value="0"></p>
+						<p>Child (6-12): $10 <input type="number" min="0" placeholder="Qty" name="child" data-price="10" value="0"></p>
+						<p>Family (2 Adults, 1-4 Children): $80 <input type="number" min="0" placeholder="Qty" name="family" data-price="80" value="0"></p>
+					</div>
+				</div>
+				<div class="flex-container">
+					<div class="option multi-day">
+						<h3>Multi-Day Pass</h3>
+						<p>Price: $100 <input type="number" min="0" placeholder="Qty" name="multi-day" data-price="100" value="0"></p>
+					</div>
+					<div class="option vip">
+						<h3>VIP Pass</h3>
+						<p>Price: $150 <input type="number" min="0" placeholder="Qty" name="vip" data-price="150" value="0"></p>
+					</div>
+				</div>
+			</div>
+			<div class="sub-amnt">Subtotal = $0.00</div>
+			<a href="checkout.html" style="text-decoration: none;"><button class="checkout-btn">Proceed to Checkout</button></a>
+		</div>
+		
+		<script>
+				// Function to calculate the total and validate inputs
+				function calculateTotal() {
+					var total = 0;
+					var totalTickets = 0;
+					var validInputs = true;
+
+					var inputs = document.querySelectorAll('.purchase-options input[type="number"]');
+					
+					inputs.forEach(function(input) {
+						var price = parseFloat(input.dataset.price);
+						var quantity = parseFloat(input.value);
+						
+						if (isNaN(quantity) || quantity < 0) {
+							validInputs = false;
+							input.classList.add('invalid'); // Add a class to highlight invalid inputs
+						} else {
+							input.classList.remove('invalid');
+							total += price * quantity;
+							totalTickets += quantity;
+						}
+					});
+
+					document.querySelector('.sub-amnt').textContent = 'Total = $' + total.toFixed(2);
+					return { total, validInputs, totalTickets };
+				}
+
+				// Attach the calculateTotal function to the input fields
+				document.querySelectorAll('.purchase-options input[type="number"]').forEach(function(input) {
+					input.addEventListener('change', calculateTotal);
+				});
+
+				// Initial calculation
+				calculateTotal();
+
+				// Checkout button event listener
+				document.querySelector('.checkout-btn').addEventListener('click', function(event) {
+					var { totalTickets, validInputs } = calculateTotal();
+
+					if (!validInputs || totalTickets === 0) {
+						event.preventDefault(); // Prevent the default button action
+						alert('Please enter valid quantities and select at least one ticket.');
+					} else {
+						
+						// Save the day selection
+						var day = document.getElementById('day').value;
+						localStorage.setItem('selectedDay', day);
+
+						// Save the quantities and prices
+						var tickets = {};
+						document.querySelectorAll('.purchase-options input[type="number"]').forEach(function(input) {
+							var name = input.name;
+							var value = input.value;
+							tickets[name] = value;
+						});
+						localStorage.setItem('tickets', JSON.stringify(tickets));
+
+						// Save the total amount
+						var totalAmount = document.querySelector('.sub-amnt').textContent;
+						localStorage.setItem('totalAmount', totalAmount);
+						
+						// Redirect to the checkout page
+						window.location.href = 'checkout.html'; 
+					
+					}
+				});
+				
+				window.onload = function() {
+					calculateTotal();
+				};
+
+			</script>
+
+		
+		<!-- <script>
+			// Function to calculate the total
+			function calculateTotal() {
+				var total = 0;
+				// Get all the input fields within .purchase-options
+				var inputs = document.querySelectorAll('.purchase-options input[type="number"]');
+				
+				// Loop through inputs and calculate the total
+				inputs.forEach(function(input) {
+					var price = parseFloat(input.dataset.price); // Get the data-price attribute
+					var quantity = parseFloat(input.value); // Get the input value
+					total += price * (isNaN(quantity) ? 0 : quantity); // Add to total
+				});
+				
+				// Update the total amount display
+				document.querySelector('.sub-amnt').textContent = 'Total = $' + total.toFixed(2);
+			}
+
+			// Attach the calculateTotal function to the input fields
+			document.querySelectorAll('.purchase-options input[type="number"]').forEach(function(input) {
+				input.addEventListener('change', calculateTotal);
+			});
+
+			// Call the function to display the initial total
+			calculateTotal();
+		</script>
+
+		<script>
+			document.querySelector('.checkout-btn').addEventListener('click', function() {
+				// Save the day selection
+				var day = document.getElementById('day').value;
+				localStorage.setItem('selectedDay', day);
+
+				// Save the quantities and prices
+				var tickets = {};
+				document.querySelectorAll('.purchase-options input[type="number"]').forEach(function(input) {
+					var name = input.name;
+					var value = input.value;
+					tickets[name] = value;
+				});
+				localStorage.setItem('tickets', JSON.stringify(tickets));
+
+				// Save the total amount
+				var totalAmount = document.querySelector('.sub-amnt').textContent;
+				localStorage.setItem('totalAmount', totalAmount);
+				
+				// Redirect to the checkout page
+				window.location.href = 'checkout.html';
+			});
+
+		</script> -->
+
+		
+		<div class="navbar">
+			<a href="index.html"><div class="nav-item">⌂</div></a>
+			
+			<a onclick="openDialog();"><div class="nav-item">?</div></a>
+		</div>
+		<div id="helpModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeDialog()">&times;</span>
+				<h2>EventEASE Purchase Tickets Page Guide</h2>
+				<p>Welcome to the EventEASE Purchase Tickets page. This guide will assist you in navigating and utilizing the features available on this page for a smooth ticket purchasing experience.</p>
+
+				<ul>
+					<li>
+						<strong>Selecting Ticket Options:</strong> You can choose from single-day passes separated by age and day.  There are multi-day passes for those attending multiple days.  There is a VIP pass for those who want a premium experience.
+					</li>
+					<li>
+						<strong>Proceeding to Checkout:</strong> Once you have selected your tickets and confirmed the total, click the 'Proceed to Checkout' button.
+					</li>
+				</ul>
+				<p>The navbar at the bottom of the screen helps you navigate through the <strong>EventEASE</strong> app. Use the <strong>home</strong> icon to return to the main menu, and the <strong>question mark</strong> icon to open this help dialog.</p>
+				
+				<p>If you need further assistance or have inquiries beyond what is covered here, please contact our support team at support@EventEase.com or call us at 719-266-2837.</p>
+			</div>
+		</div>
+
+		<script>
+			// When the user clicks the ?, open the modal 
+			function openDialog() {
+				document.getElementById('helpModal').style.display = "block";
+			}
+			
+			// When the user clicks on (x), close the modal
+			function closeDialog() {
+				document.getElementById('helpModal').style.display = "none";
+			}
+		</script>
+		<div class="arrow" onclick="goBack()">
+            ← 
+        </div>
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
+    </div>
+</body>
+</html>

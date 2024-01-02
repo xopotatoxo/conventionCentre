@@ -1,0 +1,102 @@
+body {
+    font-family: 'League Spartan', sans-serif;
+    background-color: #3B1980; /* EFEFFF 4C7AFF */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%; 
+    max-width: 400px; 
+    height: 100vh; 
+    background-color: white;
+    border: 1px solid lightgray;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; 
+	box-sizing: border-box;
+}
+
+#gps-icon {
+    display: block;
+    margin: 0 auto;
+    width: 25px;
+    height: 35px;
+	padding-top: 0px;
+}
+
+.logo {
+    font-family: 'Arvo', serif;
+    font-size: 38px;
+    color: #4C7AFF;
+    font-weight: 700; /* bold */
+    font-style: italic;
+    margin-top: -10px;
+}
+
+.page-title {
+	font-family: 'Arvo', serif;
+    color: #FF3131; /* 4A90E2 */ 
+    font-size: 38px; 
+    font-weight: bold;
+    text-align: center;
+	margin-top: 40px;
+    margin-bottom: 10px; 
+}
+
+.buttons {
+    margin-top: 50px; 
+}
+
+.buttons button {
+    width: 80%;  
+    padding: 80px 0; 
+    margin-bottom: 55px; 
+    background-color: #4C7AFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'League Spartan', sans-serif;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.buttons button:hover {
+    background-color: #375FD8;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0;
+    background-color: #4C7AFF; 
+    position: absolute;
+    bottom: 0px;
+    width: 400px;
+    border-top: 1px solid lightgray;
+	left: 50%; 
+    transform: translateX(-50%); 
+}
+
+.nav-item {
+    flex: 1;
+    padding: 12px;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    
+}
+
+.nav-item:hover {
+    background-color: #3a5fcd;
+}
+
+

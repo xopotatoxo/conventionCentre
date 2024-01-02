@@ -1,0 +1,157 @@
+body {
+    font-family: 'League Spartan', sans-serif;
+    background-color: #3B1980; /* EFEFFF 4C7AFF */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px; 
+    height: 100vh; 
+    background-color: white;
+    border: 1px solid lightgray;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; 
+	box-sizing: border-box;
+}
+
+#gps-icon {
+    display: block;
+    margin: 0 auto;
+    width: 25px;
+    height: 35px;
+	padding-top: 0px;
+}
+
+.logo {
+    font-family: 'Arvo', serif;
+    font-size: 38px;
+    color: #4C7AFF;
+    font-weight: 700; /* bold */
+    font-style: italic;
+    margin-top: -10px;
+}
+
+.page-title {
+	font-family: 'Arvo', serif;
+    color: #FF3131; /* 4A90E2 */ 
+    font-size: 38px;
+    font-weight: bold;
+    text-align: center;
+	margin-top: 40px;
+    margin-bottom: 30px; 
+}
+
+.results {
+    margin-top: 30px;
+}
+
+.vendor {
+    display: flex;
+    align-items: center;
+	justify-content: space-between;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.vendor-info {
+    flex-grow: 1;
+}
+
+.vendor-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.vendor-info h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.vendor-info p {
+    margin-top: 0;
+    font-size: 14px;
+    color: #777;
+}
+
+.actions {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.bookmark-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: gray;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.bookmark-btn:hover {
+    color: gold;
+}
+
+.additional-results h3 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #444;
+}
+
+.vendor-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+	align-items: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0;
+    background-color: #4C7AFF;
+    position: absolute;
+    bottom: 0px;
+    width: 400px;
+    border-top: 1px solid lightgray;
+	left: 50%; /* Move the left edge to the center of the parent */
+    transform: translateX(-50%); /* Shift the navbar back by half its width */
+}
+
+.nav-item {
+    flex: 1;
+    padding: 12px;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav-item:hover {
+    background-color: #3a5fcd; /* Slightly darker blue */
+}
+
+.arrow {
+    position: absolute;
+    bottom: 60px;
+    left: calc(50% - 180px);
+    font-size: 50px;
+	color: #4C7AFF;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.arrow:hover {
+    color: #375FD8;
+}

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventEASE - Discover</title>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+			<img src="images/gps-marker-icon.jpg" alt="GPS Marker" id="gps-icon">
+            <div class="logo">EventEASE</div>
+			<div class="page-title" style="margin-bottom: 40px">Events</div>
+        </div>
+		<div class="event-list">
+			<div class="event">
+                <img src="images/event-image1.png" id="event1" alt="Event Image 1" class="event-img">
+                <div class="event-info">
+                    <h2>Yoda Sing-along</h2>
+                    <p>Sing like me you must.</p>
+                    <div class="event-time">3:00 PM - 3:30 PM</div>
+					<button class="add-to-planner" data-event-id="event1">Add to Planner</button>
+                </div>
+            </div>
+			<div class="event">
+                <img src="images/event-image2.jpg" id="event2" alt="Event Image 2" class="event-img">
+                <div class="event-info">
+                    <h2>Comic Book Discussion</h2>
+                    <p>Deep dive into the latest releases.</p>
+                    <div class="event-time">3:00 PM - 4:00 PM</div>
+					<button class="add-to-planner" data-event-id="event2">Add to Planner</button>
+                </div>
+            </div>
+            <div class="event">
+                <img src="images/event-image3.jpg" id="event3" alt="Event Image 3" class="event-img">
+                <div class="event-info">
+                    <h2>Tabletop Gaming Meet</h2>
+                    <p>Show off your cosplay skills and compete for prizes. Open to all skill levels!</p>
+                    <div class="event-time">4:30 PM - 5:30 PM</div>
+					<button class="add-to-planner" data-event-id="event3">Add to Planner</button>
+                </div>
+            </div>
+			<div class="event">
+                <img src="images/event-image4.svg" id="event4" alt="Event Image 4" class="event-img">
+                <div class="event-info">
+                    <h2>Cosplay Competition</h2>
+                    <p>Join fellow enthusiasts for a fun afternoon!</p>
+                    <div class="event-time">6:00 PM - 8:00 PM</div>
+					<button class="add-to-planner" data-event-id="event4">Add to Planner</button>
+                </div>
+            </div>
+			<div class="event">
+				<img src="images/event-image5.svg" id="event5" alt="Event Image 5" class="event-img">
+				<div class="event-info">
+					<h2>Sci-Fi Trivia Challenge</h2>
+					<p>Test your knowledge of all things science fiction.</p>
+					<div class="event-time">6:00 PM - 8:00 PM</div>
+					<button class="add-to-planner" data-event-id="event5">Add to Planner</button>
+				</div>
+			</div>
+			<div class="event">
+				<img src="images/event-image6.png" id="event6" alt="Event Image 6" class="event-img">
+				<div class="event-info">
+					<h2>Superhero Movie Marathon</h2>
+					<p>Enjoy back-to-back screenings of classic superhero films.</p>
+					<div class="event-time">8:00 PM - 11:00 PM</div>
+					<button class="add-to-planner" data-event-id="event6">Add to Planner</button>
+				</div>
+			</div>
+        </div>
+		<h3>Your Daily Planner</h3>
+		<button id="resetPlanner" style="display: none;">Reset Planner</button>
+        <div class="planner">
+            
+        </div>
+		
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				// Load and render events from local storage
+				loadPlannerEvents();
+
+				// Attach event listeners to "Add to Planner" buttons
+				var addToPlannerButtons = document.querySelectorAll('.add-to-planner');
+				addToPlannerButtons.forEach(function(button) {
+					button.addEventListener('click', function(event) {
+						var eventCard = event.target.closest('.event');
+						var eventName = eventCard.querySelector('h2').textContent;
+						var eventTime = eventCard.querySelector('.event-time').textContent;
+						var eventId = event.target.getAttribute('data-event-id');
+						addEventToPlanner(eventName, eventTime, eventId, event.target);
+					});
+				});
+
+				// Attach event listener to the reset button
+				var resetButton = document.getElementById('resetPlanner');
+				resetButton.addEventListener('click', function() {
+					localStorage.removeItem('plannerEvents');
+					renderPlannerEvents();
+				});
+			});
+
+			function addEventToPlanner(name, time, id, button) {
+				var existingEvents = getPlannerEvents();
+
+				if (!existingEvents.some(event => event.id === id)) {
+					existingEvents.push({ id, name, time });
+					savePlannerEvents(existingEvents);
+					renderPlannerEvents();
+					button.textContent = 'Added';
+					button.disabled = true;
+				}
+			}
+
+			function renderPlannerEvents() {
+				var planner = document.querySelector('.planner');
+				var events = getPlannerEvents();
+
+				planner.innerHTML = '';
+				if (events.length === 0) {
+					// Display a message if no events are in the planner
+					var emptyMessage = document.createElement('div');
+					emptyMessage.className = 'empty-planner-message';
+					emptyMessage.textContent = 'No events added to your planner yet!';
+					planner.appendChild(emptyMessage);
+				} else {
+					// Sort and display events
+					events.sort((a, b) => new Date('1970/01/01 ' + a.time.split(' - ')[0]) - new Date('1970/01/01 ' + b.time.split(' - ')[0]));
+
+					events.forEach(event => {
+						var timeSlot = document.createElement('div');
+						timeSlot.className = 'time-slot';
+						timeSlot.innerHTML = `
+							<div class="time">${event.time}</div>
+							<div class="plan">${event.name}</div>
+							<button class="remove-event" data-event-id="${event.id}">X</button>`;
+						planner.appendChild(timeSlot);
+					});
+				}
+
+				// Add event listeners to the remove buttons
+				document.querySelectorAll('.remove-event').forEach(button => {
+					button.addEventListener('click', function(e) {
+						removeEventFromPlanner(e.target.getAttribute('data-event-id'));
+					});
+				});
+
+				// Update "Add to Planner" buttons
+				updateAddToPlannerButtons();
+			}
+
+			function removeEventFromPlanner(eventId) {
+				var events = getPlannerEvents();
+				var updatedEvents = events.filter(event => event.id !== eventId);
+				savePlannerEvents(updatedEvents);
+				renderPlannerEvents();
+			}
+
+			function updateAddToPlannerButtons() {
+				var events = getPlannerEvents();
+				var addToPlannerButtons = document.querySelectorAll('.add-to-planner');
+				addToPlannerButtons.forEach(button => {
+					var eventId = button.getAttribute('data-event-id');
+					if (events.some(event => event.id === eventId)) {
+						button.textContent = 'Added';
+						button.disabled = true;
+					} else {
+						button.textContent = 'Add to Planner';
+						button.disabled = false;
+					}
+				});
+			}
+
+			function getPlannerEvents() {
+				var events = localStorage.getItem('plannerEvents');
+				return events ? JSON.parse(events) : [];
+			}
+
+			function savePlannerEvents(events) {
+				localStorage.setItem('plannerEvents', JSON.stringify(events));
+			}
+
+			function loadPlannerEvents() {
+				renderPlannerEvents();
+			}
+			
+		</script>
+
+		<div class="navbar">
+			<a href="index.html"><div class="nav-item">⌂</div></a>
+			
+			<a onclick="openDialog();"><div class="nav-item">?</div></a>
+		</div>
+		<div id="helpModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeDialog()">&times;</span>
+				<h2>EventEASE Event Page Guide</h2>
+				<p>Welcome to the EventEASE event discovery page. This guide will help you navigate and utilize the features available on this page.</p>
+
+				<ul>
+					<li>
+						<strong>Exploring Events:</strong> Scroll through the list of events. Each event card provides a snapshot, including an image, event name, description, and timing.
+					</li>
+					<li>
+						<strong>Adding Events to Your Planner:</strong> Click on the 'Add to Planner' button on any event card to include it in your personal planner.
+					</li>
+					<li>
+						<strong>Viewing Your Daily Planner:</strong> Your selected events will appear in the planner section at the bottom of the page. The planner organizes your events based on their scheduled times.  You can remove an event by clicking the 'X' button next to each event.
+					</li>
+				</ul>
+				<p>The navbar at the bottom of the screen helps you navigate through the <strong>EventEASE</strong> app. Use the <strong>home</strong> icon to return to the main menu, and the <strong>question mark</strong> icon to open this help dialog.</p>
+				
+				<p>If you need further assistance or have inquiries beyond what is covered here, please contact our support team at support@EventEase.com or call us at 719-266-2837.</p>
+			</div>
+		</div>
+
+		<script>
+			// When the user clicks the ?, open the modal 
+			function openDialog() {
+				document.getElementById('helpModal').style.display = "block";
+			}
+			
+			// When the user clicks on (x), close the modal
+			function closeDialog() {
+				document.getElementById('helpModal').style.display = "none";
+			}
+		</script>
+    </div>
+</body>
+</html>

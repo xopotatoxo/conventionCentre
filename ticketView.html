@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventEASE - View Tickets</title>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+			<img src="images/gps-marker-icon.jpg" alt="GPS Marker" id="gps-icon">
+            <div class="logo">EventEASE</div>
+			<div class="page-title" style="margin-bottom: 50px;">Your Tickets</div>
+        </div>
+		<div class="ticket-list">
+			<!-- <div class="tickets"> -->
+				<!-- <div class="ticket-item"> -->
+					<!-- <span class="ticket-name">Concert XYZ</span> -->
+					<!-- <span class="ticket-date">Nov 5, 2023</span> -->
+				<!-- </div> -->
+			<!-- </div> -->
+			<div class="tickets">
+				<div class="ticket">
+					<h3>CALGARY EXPO - VIP</h3>
+					<p>Date: April 25-28, 2024 | 9:00AM - 9:00PM</p>
+					<p>Location: Stampede Park, Calgary</p>
+					<img src="images/barcode.png" alt="Barcode for Entry" class="barcode">
+				</div>
+			</div>
+		</div>
+		<div class="index-buttons" style="margin-top: 60px;">
+			<a href="ticketBuy.html"><button id="purchaseMoreTickets">Purchase More Tickets</button></a>
+		</div>
+		
+		<script>
+			
+			
+			document.addEventListener('DOMContentLoaded', function() {
+				// Retrieve ticket data from localStorage
+				var tickets = JSON.parse(localStorage.getItem('tickets') || '{}');
+				var ticketContainer = document.querySelector('.ticket-list');
+				var selectedDay = localStorage.getItem('selectedDay') || 'Not specified';
+
+				// Function to create and display tickets
+				function displayTicket(ticketType, quantity) {
+					for (let i = 0; i < quantity; i++) {
+						var ticketDiv = document.createElement('div');
+						ticketDiv.className = 'ticket';
+
+						var ticketName = document.createElement('h3');
+						ticketName.textContent = 'CALGARY EXPO - ' + ticketType.replace(/-/g, ' ').toUpperCase();
+						
+						var ticketDate = document.createElement('p');
+						ticketDate.textContent = 'Date: April 25-28, 2024 | 9:00AM - 9:00PM';
+
+						var ticketLocation = document.createElement('p');
+						ticketLocation.textContent = 'Location: Stampede Park, Calgary';
+
+						var barcodeImg = document.createElement('img');
+						barcodeImg.src = 'images/barcode.png';
+						barcodeImg.alt = 'Barcode for Entry';
+						barcodeImg.className = 'barcode';
+
+						// Append elements to the ticket div
+						ticketDiv.appendChild(ticketName);
+						ticketDiv.appendChild(ticketDate);
+						ticketDiv.appendChild(ticketLocation);
+						ticketDiv.appendChild(barcodeImg);
+
+						// Append the ticket div to the container
+						ticketContainer.appendChild(ticketDiv);
+					}
+				}
+
+				// Loop through each ticket type and create its display
+				Object.keys(tickets).forEach(function(ticketType) {
+					var quantity = parseInt(tickets[ticketType]);
+					if (quantity > 0) {
+						displayTicket(ticketType, quantity);
+					}
+				});
+				
+				// Event listener for the Reset Tickets button
+				var resetTicketsButton = document.getElementById('resetTicketsButton');
+				if (resetTicketsButton) {
+					resetTicketsButton.addEventListener('click', function() {
+						localStorage.removeItem('tickets');
+						alert('Ticket data has been reset.');
+						// You might want to add code here to update the UI or redirect the user
+					});
+				}
+							
+				
+			});
+
+
+
+
+		</script>
+		
+		
+		
+		
+		
+		<div class="navbar">
+			<a href="index.html"><div class="nav-item">⌂</div></a>
+			
+			<a onclick="openDialog();"><div class="nav-item">?</div></a>
+		</div>
+		<div id="helpModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeDialog()">&times;</span>
+				<h2>EventEASE View Tickets Page Guide</h2>
+				<p>Welcome to the EventEASE View Tickets page. This guide will help you navigate and use the features available on this page effectively.</p>
+
+				<ul>
+					<li>
+						<strong>Viewing Your Tickets:</strong> On opening the page, you'll see a list of tickets you've purchased. Each ticket card provides detailed information, including the event name, date, location, and a barcode for entry.
+					</li>
+					<li>
+						<strong>Purchasing More Tickets: </strong> If you wish to buy additional tickets, simply click on the 'Purchase More Tickets' button. This will redirect you to the ticket buying page where you can explore more events and secure your tickets.
+					</li>
+				</ul>
+				<p>The navbar at the bottom of the screen helps you navigate through the <strong>EventEASE</strong> app. Use the <strong>home</strong> icon to return to the main menu, and the <strong>question mark</strong> icon to open this help dialog.</p>
+				
+				<p>If you need further assistance or have inquiries beyond what is covered here, please contact our support team at support@EventEase.com or call us at 719-266-2837.</p>
+			</div>
+			<button id="resetTicketsButton" style="display: none;">Reset Tickets</button>
+		</div>
+
+		<script>
+			// When the user clicks the ?, open the modal 
+			function openDialog() {
+				document.getElementById('helpModal').style.display = "block";
+			}
+			
+			// When the user clicks on (x), close the modal
+			function closeDialog() {
+				document.getElementById('helpModal').style.display = "none";
+			}
+		</script>
+		
+    </div>
+</body>
+</html>

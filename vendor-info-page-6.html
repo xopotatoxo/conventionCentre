@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventEASE - Vendor Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+			<img src="images/gps-marker-icon.jpg" alt="GPS Marker" id="gps-icon">
+            <div class="logo">EventEASE</div>
+			<div class="page-title" style="margin-bottom: 30px;">Vendor Details</div>
+        </div>
+		<div class="vendor-landing">
+			<img src="images/question.png" alt="Vendor 1" class="vendor-img-landing">
+			<h2>[Insert Vendor Name Here]</h2>
+			<div class="vbuttons">
+				<a href="map.html"><button class="vbtn">Map</button></a>
+				<button class="vbtn" onclick="toggleCheckIn(this)">Check-In</button>
+				<button class="vbtn" onclick="openNotesModal()">Notes</button>
+			</div>
+			<p><strong>This page contains placeholder information and is under construction, but it is functional.</strong>  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+		
+		<div id="notesModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeNotesModal()">&times;</span>
+				<h2>Notes for [Vendor Name]</h2>
+				<textarea id="vendorNotes" rows="5" cols="33" placeholder="Type your notes here..."></textarea>
+			</div>
+		</div>
+		
+		<script>
+		
+			// Toggle Check-In Button
+			function toggleCheckIn(btn) {
+				if (btn.innerText === "Check-In") {
+					btn.innerText = "Checked-In";
+					btn.classList.add("checked-in");
+				} else {
+					btn.innerText = "Check-In";
+					btn.classList.remove("checked-in");
+				}
+			}
+
+			// Open Notes Modal
+			function openNotesModal() {
+				document.getElementById('notesModal').style.display = "block";
+			}
+
+			// Close Notes Modal
+			function closeNotesModal() {
+				document.getElementById('notesModal').style.display = "none";
+			}
+
+		
+		</script>
+		
+		
+		<div class="navbar">
+			<a href="index.html"><div class="nav-item">⌂</div></a>
+			
+			<a onclick="openDialog();"><div class="nav-item">?</div></a>
+		</div>
+		<div id="helpModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeDialog()">&times;</span>
+				<h2>EventEASE Vendor Details Page Guide</h2>
+				<p>Welcome to the EventEASE Vendor Details page. This guide will assist you in navigating and using the features available on this page.<p>
+				<ul>
+					<li><strong>Vendor Information:</strong> The page displays specific details about the selected vendor, including their name and a brief description. Note that the current information is a placeholder and the page is under construction.</li>
+					<li><strong>Interacting with Vendor Options:</strong> Click the 'Map' button to view the vendor's location within the event venue. Use the 'Check-In' button to mark your visit to the vendor. This button toggles to 'Checked-In' once clicked. The 'Notes' button opens a modal where you can jot down any notes or reminders related to the vendor.</li>
+				</ul>
+				<p>As always, the <strong>navbar</strong> is present along the bottom of the screen. Use the <strong>home</strong> icon to return to the main menu and navigate elsewhere. The <strong>question mark</strong> icon opens this help dialog.</p>
+				<p>If you need further assistance, please reach out to our support team at support@EventEase.com or 719-266-2837.</p>
+			</div>
+		</div>
+		<script>
+			// When the user clicks the ?, open the modal 
+			function openDialog() {
+				document.getElementById('helpModal').style.display = "block";
+			}
+			
+			// When the user clicks on (x), close the modal
+			function closeDialog() {
+				document.getElementById('helpModal').style.display = "none";
+			}
+		</script>
+		<div class="arrow" onclick="goBack()">
+            ← 
+        </div>
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
+    </div>
+</body>
+</html>

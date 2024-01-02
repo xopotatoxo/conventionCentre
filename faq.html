@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventEASE - FAQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+			<img src="images/gps-marker-icon.jpg" alt="GPS Marker" id="gps-icon">
+            <div class="logo">EventEASE</div>
+			<div class="page-title" style="margin-bottom: 40px">FAQ</div>
+        </div>
+		<div class="faqs">
+			<h3>What should I bring to the convention?</h3>
+			<p>We recommend bringing your ID, convention ticket or pass, a small backpack, snacks, water, portable charger, and any personal necessities you might need.</p>
+            
+			<h3>What should I expect?</h3>
+			<ul style="text-align: left;">
+				<li>Independent vendors and artists selling merch for all your favourite properties as well as unique art pieces, trinkets, and everything else under the sun</li>
+				<li>Panels with your favourite celebrities</li>
+				<li>Workshops on topics such as cosplay construction, stage combat, and more</li>
+				<li>Opportunities for autographs and photo ops with celebrities</li>
+				<li>Food trucks outside and food vendors in addition to the food court inside</li>
+				<li>Other wonderful surprises!</li>
+			</ul>
+			
+			<h3>Are there ATMs at the convention?</h3>
+			<p>Yes, there are several ATMs located throughout the convention center for your convenience.</p>
+            
+            <h3>Is there a dress code?</h3>
+			<p>There's no formal dress code, but we encourage attendees to wear comfortable attire. Cosplaying is welcome and encouraged!</p>
+
+            <h3>Can I bring my own food and drinks?</h3>
+			<p>Yes, you can bring your own snacks and beverages, but keep in mind there are also a variety of food vendors available at the event.</p>
+
+            <h3>How much does parking cost?</h3>
+			<p>On-site parking costs $25 per day.</p>
+			
+			<h3>Where is the nearest CTrain station?</h3>
+			<p>Victoria Park/Stampede Station.</p>
+			
+			<h3>Any additional questions?</h3>
+			<p>Contact us at 719-266-2837 or ask any of our volunteers in the blue EXPO shirts!</p>
+        </div>
+		<div class="navbar">
+			<a href="index.html"><div class="nav-item">⌂</div></a>
+			
+			<a onclick="openDialog();"><div class="nav-item">?</div></a>
+		</div>
+		<div id="helpModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeDialog()">&times;</span>
+				<h2>FAQ Section Help Guide</h2>
+				<p>Welcome to the <strong>EventEASE</strong> FAQ (Frequently Asked Questions) section.</p>
+				
+				<ul>
+					<li>
+						<strong>Navigating the FAQ Section:</strong> Scroll through the list of questions.
+					</li>
+					<li>
+						<strong>Topics Covered:</strong> Find information on various topics including event guidelines, ATM availability, dress code, food and beverage policies, parking, and public transit options.
+					</li>
+				</ul>
+				 <p>Use the <strong>navbar</strong> at the bottom for easy navigation. The <strong>home</strong> icon returns you to the main menu, and the <strong>question mark</strong> icon opens this help guide.</p>
+				<p>For immediate support or inquiries beyond the FAQs, reach out to our team at support@EventEase.com or call us at 719-266-2837.</p>
+			</div>
+		</div>
+		<script>
+			// When the user clicks the ?, open the modal 
+			function openDialog() {
+				document.getElementById('helpModal').style.display = "block";
+			}
+			
+			// When the user clicks on (x), close the modal
+			function closeDialog() {
+				document.getElementById('helpModal').style.display = "none";
+			}
+		</script>
+    </div>
+</body>
+</html>

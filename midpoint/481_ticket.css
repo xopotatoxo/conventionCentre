@@ -1,0 +1,300 @@
+body {
+    font-family: 'League Spartan', sans-serif;
+    background-color: #3B1980; /* EFEFFF 4C7AFF */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%; 
+    max-width: 400px; 
+    height: 100vh; 
+    background-color: white;
+    border: 1px solid lightgray;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; 
+	box-sizing: border-box;
+}
+
+#gps-icon {
+    display: block;
+    margin: 0 auto;
+    width: 25px;
+    height: 35px;
+	padding-top: 0px;
+}
+
+.logo {
+    font-family: 'Arvo', serif;
+    font-size: 38px;
+    color: #4C7AFF;
+    font-weight: 700; /* bold */
+    font-style: italic;
+    margin-top: -10px;
+}
+
+.page-title {
+	font-family: 'Arvo', serif;
+    color: #FF3131; /* 4A90E2 */ 
+    font-size: 38px; 
+    font-weight: bold;
+    text-align: center;
+	margin-top: 40px;
+    margin-bottom: 10px; /* ### t1=10 t2=50 t3=-10 t4=30 ### */
+}
+
+/* ### .total-amnt */
+
+/* ticket1 START */
+
+.buttons {
+    margin-top: 50px; 
+}
+
+.buttons button {
+    width: 80%;  
+    padding: 80px 0; 
+    margin-bottom: 55px; 
+    background-color: #4C7AFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'League Spartan', sans-serif;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.buttons button:hover {
+    background-color: #375FD8;
+}
+
+/* ticket1 END */
+
+/* ticket2.1 START */
+
+.tickets {
+    margin-top: 40px;
+}
+
+.ticket {
+    background-color: #EFEFFF;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ticket h3 {
+    margin-top: 0;
+    color: #333;
+    font-weight: bold;
+}
+
+.ticket p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.barcode {
+    width: 100%;
+    max-width: 300px;
+    margin: 20px 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ticket-page {
+	font-family: 'League Spartan', serif;
+    color: #4C7AFF; /* 4A90E2 */ 
+    font-size: 24px; 
+    font-weight: bold;
+    text-align: center;
+	margin-top: 20px;
+}
+
+/* ticket2.1 END */
+
+/* ticket3 START */
+
+.purchase-container {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.purchase-options {
+    margin-top: 30px;
+    display: grid;
+    grid-gap: 10px;
+}
+
+.option {
+    background-color: #EFEFFF;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.option.multi-day,
+.option.vip {
+    flex: 1;
+    margin: 0;
+}
+
+option {
+    font-family: 'League Spartan', sans-serif;
+    padding: 10px;
+}
+
+.prices p {
+    margin: 10px 0;
+}
+
+input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.total-amnt {
+	margin-top: 33px;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.purchase-btn {
+    display: block;
+    margin: 25px auto 0;
+    padding: 10px 30px;
+    background-color: #4C7AFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+	font-weight: bold;
+    cursor: pointer;
+}
+
+.purchase-btn:hover {
+    background-color: #3B6AD4;
+}
+
+/* ticket3 END */
+
+ /* ticket4 START */
+ 
+.payment-container {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.expiry-cvv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.expiry-cvv > div {
+    width: 48%;
+}
+
+.total-amnt {
+	margin-top: 23px;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.pay-btn {
+	margin: 38px auto 0;
+    padding: 10px 20px;
+    background-color: #4C7AFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+	font-weight: bold;
+}
+ 
+ /* ticket4 END */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0;
+    background-color: #4C7AFF; 
+    position: absolute;
+    bottom: 0px;
+    width: 400px;
+    border-top: 1px solid lightgray;
+	left: 50%; 
+    transform: translateX(-50%); 
+}
+
+.nav-item {
+    flex: 1;
+    padding: 12px;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    
+}
+
+.nav-item:hover {
+    background-color: #3a5fcd;
+}
+
+/* ticket2.2 START */
+
+.arrow {
+    position: absolute;
+    bottom: 60px;
+    left: calc(50% - 180px);
+    font-size: 50px;
+	color: #4C7AFF;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.arrow:hover {
+    color: #375FD8;
+}
+
+/* ticket2.2 END */
+
+

@@ -1,0 +1,185 @@
+body {
+    font-family: 'League Spartan', sans-serif;
+    background-color: #3B1980; /* EFEFFF 4C7AFF */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px; 
+    height: 100vh; 
+    background-color: white;
+    border: 1px solid lightgray;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; 
+	box-sizing: border-box;
+}
+
+#gps-icon {
+    display: block;
+    margin: 0 auto;
+    width: 25px;
+    height: 35px;
+	padding-top: 0px;
+}
+
+.logo {
+    font-family: 'Arvo', serif;
+    font-size: 38px;
+    color: #4C7AFF;
+    font-weight: 700; /* bold */
+    font-style: italic;
+    margin-top: -10px;
+}
+
+.page-title {
+	font-family: 'Arvo', serif;
+    color: #FF3131; /* 4A90E2 */ 
+    font-size: 38px;
+    font-weight: bold;
+    text-align: center;
+	margin-top: 40px;
+    margin-bottom: 30px; 
+}
+
+.event-list {
+    margin-top: 20px;
+	max-height: 250px; /* Fixed height */
+    overflow-y: auto; /* Scrollable */
+}
+
+.event-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.event-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.event-list::-webkit-scrollbar-thumb {
+    background: #4C7AFF;
+}
+
+.event-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.event {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 0px;
+}
+
+.event-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.event-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Take available space */
+}
+
+.event-info h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.event-info p {
+    margin-top: 0;
+    font-size: 14px;
+    color: #777;
+}
+
+.event-time {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+}
+
+.add-to-planner {
+    background-color: #4C7AFF;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+	font-weight: bold;
+}
+
+.add-to-planner:hover {
+    background-color: #3B1980;
+}
+
+.planner {
+    margin-top: 20px;
+}
+
+.time-slot {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.time {
+    font-weight: bold;
+}
+
+.plan {
+    color: #555;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0;
+    background-color: #4C7AFF;
+    position: absolute;
+    bottom: 0px;
+    width: 400px;
+    border-top: 1px solid lightgray;
+	left: 50%; 
+    transform: translateX(-50%); 
+}
+
+.nav-item {
+    flex: 1;
+    padding: 12px;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav-item:hover {
+    background-color: #3a5fcd; /* Slightly darker blue */
+}
+
+.arrow {
+    position: absolute;
+    bottom: 60px;
+    left: calc(50% - 180px);
+    font-size: 50px;
+	color: #4C7AFF;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.arrow:hover {
+    color: #375FD8;
+}

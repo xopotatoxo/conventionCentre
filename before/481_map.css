@@ -1,0 +1,127 @@
+body {
+    font-family: 'League Spartan', sans-serif;
+    background-color: #3B1980; /* EFEFFF 4C7AFF */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px; 
+    height: 100vh; 
+    background-color: white;
+    border: 1px solid lightgray;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; 
+	box-sizing: border-box;
+}
+
+#gps-icon {
+    display: block;
+    margin: 0 auto;
+    width: 25px;
+    height: 35px;
+	padding-top: 0px;
+}
+
+.logo {
+    font-family: 'Arvo', serif;
+    font-size: 38px;
+    color: #4C7AFF;
+    font-weight: 700; /* bold */
+    font-style: italic;
+    margin-top: -10px;
+}
+
+.page-title {
+	font-family: 'Arvo', serif;
+    color: #FF3131; /* 4A90E2 */ 
+    font-size: 38px;
+    font-weight: bold;
+    text-align: center;
+	margin-top: 40px;
+    margin-bottom: 30px; 
+}
+
+.map-container {
+    position: relative;
+    width: 80%;
+    margin: auto;
+}
+
+#map {
+    width: 80%;
+    height: auto;
+}
+
+.buttons-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    margin-top: 30px;
+    margin-left: auto; 
+    margin-right: auto;
+    max-width: 300px; 
+}
+
+.poi-button {
+    padding: 10px 0px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-weight: bold;
+    background-color: #4C7AFF;
+    width: 28%; 
+    text-align: center; 
+    margin-bottom: 10px; 
+}
+
+.poi-button:hover {
+    background-color: #3B1980;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0;
+    background-color: #4C7AFF;
+    position: absolute;
+    bottom: 0px;
+    width: 400px;
+    border-top: 1px solid lightgray;
+	left: 50%; 
+    transform: translateX(-50%); 
+}
+
+.nav-item {
+    flex: 1;
+    padding: 12px;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav-item:hover {
+    background-color: #3a5fcd; /* Slightly darker blue */
+}
+
+.arrow {
+    position: absolute;
+    bottom: 60px;
+    left: calc(50% - 180px);
+    font-size: 50px;
+	color: #4C7AFF;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.arrow:hover {
+    color: #375FD8;
+}

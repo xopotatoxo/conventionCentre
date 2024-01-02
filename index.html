@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventEASE - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+			<img src="images/gps-marker-icon.jpg" alt="GPS Marker" id="index-gps-icon">
+            <div class="index-logo">EventEASE</div>
+			<div class="convention-title">Convention Expo</div>
+            <div class="convention-date">April 25 - 28, 2024 @ Stampede Park</div>
+        </div>
+        <div class="index-buttons">
+            <a href="mapNoArrow.html"><button>Map</button></a>
+            <a href="vendorsNoArrow.html"><button>Vendors</button></a>
+			<a href="events.html"><button>Events</button></a>
+            <a href="ticketView.html"><button>Tickets</button></a>
+            <a href="faq.html"><button>Frequently Asked Questions (FAQ)</button></a>
+        </div>
+		<div class="navbar">
+			<a onclick="openDialog();"><div class="nav-item">?</div></a>
+		</div>
+		<div id="helpModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeDialog()">&times;</span>
+				<h2>Need Help?</h2>
+				<p>Welcome to <strong>EventEASE</strong>! Here's how to navigate our site:</p>
+				<ul>
+					<li><strong>Map:</strong> View the layout of the Convention Expo to find locations such as stages, vendors, and amenities.</li>
+					<li><strong>Vendors:</strong> Discover the various vendors, their offerings, and where they're located at the expo.</li>
+					<li><strong>Events:</strong> Check the schedule and details for all events happening at the expo.  You may also add events to your daily planner.</li>
+					<li><strong>Tickets:</strong> Purchase and manage your tickets for the event.</li>
+					<li><strong>FAQ:</strong> Find answers to common questions about the expo, including directions, accommodations, and services.</li>
+				</ul>
+				<p>You will always be able to navigate around this web app using the <strong>navbar</strong> along the bottom of the screen. There will be a <strong>home</strong> button to return to this page. Use the <strong>back</strong> icon to go to the previous page when applicable. The <strong>question mark</strong> icon opens this help dialog.</p>
+				<p>If you need further assistance, please reach out to our support team at support@EventEase.com or 719-266-2837.</p>
+			</div>
+		</div>
+		<script>
+			// When the user clicks the ?, open the modal 
+			function openDialog() {
+				document.getElementById('helpModal').style.display = "block";
+			}
+			
+			// When the user clicks on (x), close the modal
+			function closeDialog() {
+				document.getElementById('helpModal').style.display = "none";
+			}
+		</script>
+    </div>
+</body>
+</html>
